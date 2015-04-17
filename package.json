@@ -1,0 +1,28 @@
+{
+  "name": "jspm-aurelia-bundler",
+  "version": "0.0.1",
+  "description": "bundle your aurelia apps with ease",
+  "main": "jab.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capaj/jspm-aurelia-bundler.git"
+  },
+  "keywords": [
+    "aurelia",
+    "jspm",
+    "bundling"
+  ],
+  "author": "capajj@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/capaj/jspm-aurelia-bundler/issues"
+  },
+  "homepage": "https://github.com/capaj/jspm-aurelia-bundler",
+  "dependencies": {
+    "glob": "^5.0.5",
+    "jspm": "^0.15.3"
+  }
+}
