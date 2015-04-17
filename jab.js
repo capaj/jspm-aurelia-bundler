@@ -1,7 +1,8 @@
+var glob = require("glob");
+
 module.exports = function jspmAureliaBundler(opts) {
 	var jspm = new require('jspm');
 	var builder = jspm.Builder();
-	var glob = require("glob");
 
 	var ignorePackages = [
 		'traceur',
@@ -21,7 +22,7 @@ module.exports = function jspmAureliaBundler(opts) {
 			});
 		}
 
-		console.log('packages', packages);
+		console.log('bundling ', packages);
 
 		jspm.bundle(packages, 'public/build.js', {minify: true, inject: true}).then(function() {
 			console.log('done');
