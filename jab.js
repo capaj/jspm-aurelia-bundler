@@ -1,6 +1,12 @@
 var glob = require("glob");
+var extend = require('util')._extend;
 
-module.exports = function jspmAureliaBundler(opts) {
+module.exports = function jspmAureliaBundler(passedOpts) {
+	var options = {	//default
+		glob: {ignore: ['jspm_packages/**', 'build.js', 'config.js'], root: './public/', cwd: './public/'}
+	};
+	extend(options, passedOpts);
+
 	var jspm = new require('jspm');
 	var builder = jspm.Builder();
 
@@ -15,7 +21,7 @@ module.exports = function jspmAureliaBundler(opts) {
 		return ignorePackages.indexOf(pckgName) === -1;
 	}).join(' + ');
 
-	glob("**/*.js", options, function (er, files) {
+	glob("**/*.js", options.glob, function (er, files) {
 		if (files) {
 			files.forEach(function (file){
 				packages += ' + ' + file;

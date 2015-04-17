@@ -1,6 +1,6 @@
 {
   "name": "jspm-aurelia-bundler",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "bundle your aurelia apps with ease",
   "main": "jab.js",
   "scripts": {
