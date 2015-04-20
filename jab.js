@@ -1,11 +1,19 @@
 var glob = require("glob");
 var extend = require('util')._extend;
 require('array-sugar');
+var path = require('path');
+var packageJSON = require('../../package.json');
 
 module.exports = function jspmAureliaBundler(passedOpts) {
+	var base = packageJSON.jspm.directories.baseURL;
+	var packagesDir = packageJSON.jspm.directories.packages.split('/')[1];
+	var configFile = path.relative(base, packageJSON.jspm.configFile);
+	var target = 'build.js';
 	var options = {	//default
-		globJs: {ignore: ['jspm_packages/**', 'build.js', 'config.js'], root: './public/', cwd: './public/'},
-		globHtml: {ignore: ['jspm_packages/**', 'index.html'], root: './public/', cwd: './public/'}
+		globJs: {ignore: [packagesDir + '/**', target, configFile], root: base, cwd: base},
+		globHtml: {ignore: [packagesDir + '/**', 'index.html'], root: base, cwd: base},
+		baseFolder: base,
+		target: target
 	};
 
 	extend(options, passedOpts);
@@ -36,7 +44,7 @@ module.exports = function jspmAureliaBundler(passedOpts) {
 
 			console.log('bundling ', packages);
 
-			jspm.bundle(packages, 'public/build.js', {minify: true, inject: true}).then(function() {
+			jspm.bundle(packages, path.join(), {minify: true, inject: true}).then(function() {
 				console.log('done');
 			});
 		});

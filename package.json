@@ -1,11 +1,11 @@
 {
   "name": "jspm-aurelia-bundler",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "bundle your aurelia apps with ease",
   "main": "jab.js",
   "scripts": {
     "test": "mocha",
-    "postinstall": "jspm i text"
+    "postinstall": "cd .. && cd .. && jspm i text"
   },
   "repository": {
     "type": "git",
