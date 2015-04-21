@@ -13,7 +13,8 @@ module.exports = function jspmAureliaBundler(passedOpts) {
 		globJs: {ignore: [packagesDir + '/**', target, configFile], root: base, cwd: base},
 		globHtml: {ignore: [packagesDir + '/**', 'index.html'], root: base, cwd: base},
 		baseFolder: base,
-		target: target
+		target: target,
+		jspm: {minify: false, inject: true}
 	};
 
 	extend(options, passedOpts);
@@ -39,12 +40,12 @@ module.exports = function jspmAureliaBundler(passedOpts) {
 
 		glob('**/*.html', options.globHtml, function(err, htmlFiles) {
 			htmlFiles.forEach(function(file) {
-				packages += ' + ' + file + '!text';
+				//packages += ' + ' + file + '!text';	//TODO fix this as soon as I know how to register the views
 			});
 
 			console.log('bundling ', packages);
 
-			jspm.bundle(packages, path.join(), {minify: true, inject: true}).then(function() {
+			jspm.bundle(packages, path.join(options.baseFolder, options.target), options.jspm).then(function() {
 				console.log('done');
 			});
 		});
@@ -52,4 +53,3 @@ module.exports = function jspmAureliaBundler(passedOpts) {
 
 	});
 };
-
