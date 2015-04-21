@@ -39,9 +39,9 @@ module.exports = function jspmAureliaBundler(passedOpts) {
 		});
 
 		glob('**/*.html', options.globHtml, function(err, htmlFiles) {
-			htmlFiles.forEach(function(file) {
+			//htmlFiles.forEach(function(file) {
 				//packages += ' + ' + file + '!text';	//TODO fix this as soon as I know how to register the views
-			});
+			//});
 
 			console.log('bundling ', packages);
 
